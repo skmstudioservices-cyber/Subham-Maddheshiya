@@ -1,0 +1,35 @@
+---
+interface Props { title: string; description: string; }
+const { title, description } = Astro.props;
+const path = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={new URL(path, Astro.site)} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0a0d12" />
+  <script type="application/ld+json" set:html={JSON.stringify({"@context":"https://schema.org","@type":"Person","name":"Subham Maddheshiya","url":"https://skmstudio.pages.dev/","jobTitle":"Builder — web products & data sites","worksFor":{"@type":"Organization","name":"SKM Studio Network"}})} />
+</head>
+<body>
+  <header class="wrap flex items-center justify-between py-6">
+    <a href="/" class="font-semibold tracking-tight">SKM<span class="grad">Studio</span></a>
+    <nav class="flex gap-5 text-sm mute">
+      <a href="/#work" class="hover:text-white">Work</a>
+      <a href="/tools/" class="hover:text-white">Tools</a>
+      <a href="/about/" class="hover:text-white">About</a>
+    </nav>
+  </header>
+  <main><slot /></main>
+  <footer class="wrap py-10 mt-16 border-t" style="border-color:var(--color-line)">
+    <p class="text-sm mute">SKM Studio Network — independent web products built on the open web.</p>
+  </footer>
+</body>
+</html>

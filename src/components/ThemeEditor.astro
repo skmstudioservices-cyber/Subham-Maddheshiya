@@ -1,0 +1,130 @@
+---
+const defaults = {
+  paper: '#f5f6f2',
+  surface: '#ffffff',
+  surfaceSoft: '#eaf0e8',
+  ink: '#18221d',
+  muted: '#68736c',
+  green: '#2c714f',
+  greenDark: '#174a34',
+  lime: '#d8ef9a',
+  display: 'Playfair Display',
+  sans: 'DM Sans',
+  radius: '12px'
+};
+---
+<main class="theme-editor-shell">
+  <header class="editor-top">
+    <a href="/" class="back-link">← Back to website</a>
+    <span class="editor-label">SITE SETTINGS / APPEARANCE</span>
+  </header>
+  <section class="editor-intro">
+    <p class="eyebrow">THEME CUSTOMIZER</p>
+    <h1>Make it feel <em>yours.</em></h1>
+    <p>Change the colors, fonts and shape of the website. Preview changes instantly, then save them in this browser.</p>
+  </section>
+  <section class="editor-layout">
+    <form id="theme-form" class="controls">
+      <div class="control-heading"><h2>Colors</h2><button type="button" id="reset-theme" class="text-button">Reset defaults</button></div>
+      <label class="color-control"><span>Page background</span><input type="color" name="paper" value={defaults.paper} /><code>#f5f6f2</code></label>
+      <label class="color-control"><span>Cards / surfaces</span><input type="color" name="surface" value={defaults.surface} /><code>#ffffff</code></label>
+      <label class="color-control"><span>Soft section background</span><input type="color" name="surfaceSoft" value={defaults.surfaceSoft} /><code>#eaf0e8</code></label>
+      <label class="color-control"><span>Main text</span><input type="color" name="ink" value={defaults.ink} /><code>#18221d</code></label>
+      <label class="color-control"><span>Muted text</span><input type="color" name="muted" value={defaults.muted} /><code>#68736c</code></label>
+      <label class="color-control"><span>Primary accent</span><input type="color" name="green" value={defaults.green} /><code>#2c714f</code></label>
+      <label class="color-control"><span>Dark accent / buttons</span><input type="color" name="greenDark" value={defaults.greenDark} /><code>#174a34</code></label>
+      <label class="color-control"><span>Highlight</span><input type="color" name="lime" value={defaults.lime} /><code>#d8ef9a</code></label>
+      <div class="control-heading"><h2>Typography</h2></div>
+      <label class="select-control"><span>Heading font</span><select name="display"><option value="Playfair Display">Playfair Display</option><option value="DM Sans">DM Sans</option><option value="Georgia">Georgia</option><option value="Arial">Arial</option></select></label>
+      <label class="select-control"><span>Body font</span><select name="sans"><option value="DM Sans">DM Sans</option><option value="Arial">Arial</option><option value="Georgia">Georgia</option><option value="system-ui">System UI</option></select></label>
+      <div class="control-heading"><h2>Shape</h2></div>
+      <label class="select-control"><span>Card corner radius</span><select name="radius"><option value="6px">Subtle · 6px</option><option value="12px" selected>Balanced · 12px</option><option value="20px">Rounded · 20px</option><option value="28px">Soft · 28px</option></select></label>
+      <div class="editor-actions"><button type="submit" class="save-button">Save theme in this browser</button><button type="button" id="export-theme" class="export-button">Export theme settings</button></div>
+      <p class="editor-note" id="editor-status" role="status">Changes preview live. Save stores them only in this browser.</p>
+    </form>
+    <aside class="preview-wrap">
+      <div class="preview-caption"><span>LIVE PREVIEW</span><span class="preview-dot"></span></div>
+      <div class="preview-card">
+        <div class="preview-nav"><b>SM.</b><span>ABOUT　 WORK　 CONTACT</span></div>
+        <div class="preview-content"><small>INDEPENDENT WEB PRODUCT BUILDER</small><h2>Build useful things.<br/><em>Make them matter.</em></h2><p>A thoughtful digital presence for ideas, products and useful online experiences.</p><a href="/" class="preview-cta">Explore selected work ↗</a></div>
+        <div class="preview-bottom"><span>DESIGN / DEVELOPMENT</span><span>01 — 03</span></div>
+      </div>
+      <p class="preview-help">This preview reflects the selected colors and fonts. Your live website uses these settings on this browser after saving.</p>
+    </aside>
+  </section>
+</main>
+
+<style>
+.theme-editor-shell{--editor-ink:#18221d;--editor-muted:#68736c;max-width:1120px;margin:0 auto;padding:28px 24px 80px;color:var(--ink);font-family:var(--sans)}
+.editor-top{display:flex;align-items:center;justify-content:space-between;padding-bottom:22px;border-bottom:1px solid var(--line)}.back-link{font-size:12px;font-weight:700;color:var(--green-dark)}.editor-label,.eyebrow,.preview-caption,.preview-bottom{font-size:9px;font-weight:800;letter-spacing:.15em;color:var(--muted)}
+.editor-intro{padding:62px 0 38px;max-width:650px}.editor-intro .eyebrow{color:var(--green)}.editor-intro h1{margin:14px 0;font:400 clamp(42px,7vw,68px)/1 var(--display);letter-spacing:-.05em}.editor-intro h1 em{color:var(--green)}.editor-intro>p:last-child{max-width:520px;color:var(--muted);font-size:14px;line-height:1.8}
+.editor-layout{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:start}.controls{padding:25px;border:1px solid var(--line);border-radius:var(--theme-radius,var(--radius,12px));background:var(--surface)}.control-heading{display:flex;justify-content:space-between;align-items:center;margin:4px 0 15px}.control-heading:not(:first-child){margin-top:30px}.control-heading h2{margin:0;font:400 23px var(--display)}.text-button{border:0;background:none;color:var(--green);font-size:11px;font-weight:700;cursor:pointer}.color-control,.select-control{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:12px}.color-control input{width:38px;height:28px;padding:2px;border:1px solid var(--line);border-radius:6px;background:var(--paper);cursor:pointer}.color-control code{min-width:68px;color:var(--muted);font-size:10px;text-align:right}.select-control select{max-width:170px;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);font:inherit;font-size:11px}.editor-actions{display:grid;gap:10px;margin-top:26px}.save-button,.export-button{min-height:46px;border:0;border-radius:7px;padding:0 15px;font:700 12px var(--sans);cursor:pointer}.save-button{background:var(--green-dark);color:white}.export-button{border:1px solid var(--line);background:transparent;color:var(--ink)}.editor-note{color:var(--muted);font-size:10px;line-height:1.6}
+.preview-wrap{position:sticky;top:30px}.preview-caption{display:flex;align-items:center;gap:8px;margin:0 0 13px}.preview-dot{width:6px;height:6px;border-radius:50%;background:#69a47b}.preview-card{overflow:hidden;min-height:480px;border:1px solid var(--line);border-radius:var(--theme-radius,12px);background:var(--paper);color:var(--ink);box-shadow:0 18px 50px rgb(25 50 35 / 7%)}.preview-nav{display:flex;justify-content:space-between;align-items:center;padding:22px 25px;border-bottom:1px solid var(--line);font-size:9px;letter-spacing:.1em;color:var(--muted)}.preview-nav b{font:700 17px var(--display);color:var(--green-dark)}.preview-content{padding:74px 34px 55px}.preview-content small{font-size:8px;font-weight:800;letter-spacing:.15em;color:var(--green)}.preview-content h2{margin:20px 0;font:400 clamp(34px,4vw,49px)/1.04 var(--display);letter-spacing:-.05em}.preview-content h2 em{color:var(--green)}.preview-content p{max-width:330px;color:var(--muted);font-size:12px;line-height:1.8}.preview-cta{display:inline-flex;margin-top:20px;padding:13px 17px;border-radius:6px;background:var(--green-dark);color:white;font-size:10px;font-weight:700}.preview-bottom{display:flex;justify-content:space-between;padding:18px 25px;border-top:1px solid var(--line)}.preview-help{color:var(--muted);font-size:10px;line-height:1.7}
+@media(max-width:760px){.editor-layout{grid-template-columns:1fr;gap:30px}.preview-wrap{position:static}.editor-intro{padding-top:45px}.editor-top{align-items:flex-start;gap:12px;flex-direction:column}.controls{padding:19px}}
+</style>
+
+<script>
+const defaults = {
+  paper: '#f5f6f2', surface: '#ffffff', surfaceSoft: '#eaf0e8', ink: '#18221d',
+  muted: '#68736c', green: '#2c714f', greenDark: '#174a34', lime: '#d8ef9a',
+  display: 'Playfair Display', sans: 'DM Sans', radius: '12px'
+};
+const storageKey = 'subham-site-theme-v1';
+const form = document.querySelector('#theme-form');
+const status = document.querySelector('#editor-status');
+const root = document.documentElement;
+const cssNames = {
+  paper: '--paper', surface: '--surface', surfaceSoft: '--surface-soft', ink: '--ink',
+  muted: '--muted', green: '--green', greenDark: '--green-dark', lime: '--lime'
+};
+function readTheme() {
+  try { return { ...defaults, ...JSON.parse(localStorage.getItem(storageKey) || '{}') }; }
+  catch { return { ...defaults }; }
+}
+function applyTheme(theme) {
+  for (const [key, cssName] of Object.entries(cssNames)) root.style.setProperty(cssName, theme[key]);
+  root.style.setProperty('--display', '"' + theme.display + '", Georgia, serif');
+  root.style.setProperty('--sans', '"' + theme.sans + '", ui-sans-serif, system-ui, sans-serif');
+  root.style.setProperty('--theme-radius', theme.radius);
+  document.querySelectorAll('.color-control').forEach(row => {
+    const input = row.querySelector('input');
+    row.querySelector('code').textContent = theme[input.name].toUpperCase();
+  });
+  const preview = document.querySelector('.preview-card');
+  preview.style.borderRadius = theme.radius;
+  document.querySelector('.controls').style.borderRadius = theme.radius;
+}
+function currentTheme() {
+  const data = new FormData(form);
+  return Object.fromEntries(data.entries());
+}
+function populate(theme) {
+  for (const [key, value] of Object.entries(theme)) {
+    const field = form.elements.namedItem(key);
+    if (field) field.value = value;
+  }
+  applyTheme(theme);
+}
+populate(readTheme());
+form.addEventListener('input', () => applyTheme(currentTheme()));
+form.addEventListener('change', () => applyTheme(currentTheme()));
+form.addEventListener('submit', event => {
+  event.preventDefault();
+  const theme = currentTheme();
+  localStorage.setItem(storageKey, JSON.stringify(theme));
+  status.textContent = 'Saved. This browser will now use your selected theme on the website.';
+});
+document.querySelector('#reset-theme').addEventListener('click', () => {
+  localStorage.removeItem(storageKey);
+  populate(defaults);
+  status.textContent = 'Default theme restored in this browser. Press Save to keep these defaults.';
+});
+document.querySelector('#export-theme').addEventListener('click', () => {
+  const blob = new Blob([JSON.stringify(currentTheme(), null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url; link.download = 'subham-site-theme.json'; link.click();
+  URL.revokeObjectURL(url);
+  status.textContent = 'Theme settings exported as a JSON file.';
+});
+</script>

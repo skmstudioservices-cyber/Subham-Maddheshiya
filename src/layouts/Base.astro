@@ -1,7 +1,7 @@
 ---
 interface Props { title: string; description: string; }
 const { title, description } = Astro.props;
-const path = Astro.url.pathname;
+const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 <!doctype html>
 <html lang="en">
@@ -10,26 +10,42 @@ const path = Astro.url.pathname;
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
   <meta name="description" content={description} />
-  <link rel="canonical" href={new URL(path, Astro.site)} />
+  <link rel="canonical" href={canonical} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="theme-color" content="#f5f6f2" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#0a0d12" />
-  <script type="application/ld+json" set:html={JSON.stringify({"@context":"https://schema.org","@type":"Person","name":"Subham Maddheshiya","url":"https://skmstudio.pages.dev/","jobTitle":"Builder — web products & data sites","worksFor":{"@type":"Organization","name":"SKM Studio Network"}})} />
+  <meta property="og:url" content={canonical} />
+  <meta name="twitter:card" content="summary" />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Subham Maddheshiya",
+    "url": "https://subhammaddheshiya.pages.dev/",
+    "jobTitle": "Independent Web Product Builder",
+    "worksFor": { "@type": "Organization", "name": "SKM Studio" }
+  })} />
 </head>
 <body>
-  <header class="wrap flex items-center justify-between py-6">
-    <a href="/" class="font-semibold tracking-tight">SKM<span class="grad">Studio</span></a>
-    <nav class="flex gap-5 text-sm mute">
-      <a href="/#work" class="hover:text-white">Work</a>
-      <a href="/tools/" class="hover:text-white">Tools</a>
-      <a href="/about/" class="hover:text-white">About</a>
-    </nav>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a href="/" class="brand" aria-label="Subham Maddheshiya home"><span class="brand-mark">S</span><span>SUBHAM<span class="brand-muted">.M</span></span></a>
+      <nav aria-label="Main navigation">
+        <a href="#work">Work</a>
+        <a href="#approach">Approach</a>
+        <a href="#contact" class="nav-contact">Contact <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
   </header>
   <main><slot /></main>
-  <footer class="wrap py-10 mt-16 border-t" style="border-color:var(--color-line)">
-    <p class="text-sm mute">SKM Studio Network — independent web products built on the open web.</p>
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <a href="/" class="footer-brand">SUBHAM MADDHESHIYA</a>
+      <p>Independent web products · Built in India</p>
+      <a href="mailto:skmstudio.services@gmail.com">Email ↗</a>
+      <span>© {new Date().getFullYear()} Subham Maddheshiya</span>
+    </div>
   </footer>
 </body>
 </html>

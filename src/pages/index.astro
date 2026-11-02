@@ -1,37 +1,17 @@
 ---
 import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Work from '../components/Work.astro';
+import Principles from '../components/Principles.astro';
+import KnowledgeHub from '../components/KnowledgeHub.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 ---
-<Base title="Subham Maddheshiya — builder of data-heavy websites" description="Subham Maddheshiya builds India-focused data sites, near-me location products and free browser tools under SKM Studio Network.">
-  <section class="wrap pt-14 pb-16 max-w-3xl">
-    <p class="text-sm mute mb-3">Subham Maddheshiya</p>
-    <h1 class="text-4xl md:text-6xl font-bold tracking-tight leading-[1.05]">
-      I turn public data into<br /><span class="grad">sites people actually use.</span>
-    </h1>
-    <p class="mt-6 mute text-lg leading-relaxed">
-      Independent builder. I work on India's public-data problems — pincodes, exam results,
-      what's near you — and ship them as fast, free websites.
-    </p>
-    <div class="mt-8 flex flex-wrap gap-3">
-      <a href="https://skmstudio.pages.dev/" class="px-5 py-3 rounded-xl font-medium" style="background:var(--color-accent);color:#06210f">See the studio</a>
-      <a href="mailto:skmstudio.services@gmail.com" class="px-5 py-3 rounded-xl font-medium card">Get in touch</a>
-    </div>
-  </section>
-
-  <section class="wrap pb-16 max-w-3xl">
-    <h2 class="text-xl font-semibold mb-4">What I'm building</h2>
-    <div class="card p-6">
-      <p class="mute text-sm leading-relaxed">
-        SKM Studio Network — a set of India-first data products. A pincode and village directory
-        covering lakhs of records, a live exam-results portal, a business directory, and 25+
-        near-me location sites. All free, all built to load instantly on a slow phone.
-      </p>
-      <a href="https://skmstudio.pages.dev/" class="inline-block mt-4 text-sm" style="color:var(--color-accent)">Visit SKM Studio →</a>
-    </div>
-  </section>
-
-  <section class="wrap pb-20 max-w-3xl">
-    <h2 class="text-xl font-semibold mb-4">Writing</h2>
-    <p class="mute text-sm">Notes on building for the Indian web — coming soon.</p>
-  </section>
+<Base title="Subham Maddheshiya — Independent Web Product Builder" description="Explore the work, ideas and digital products of Subham Maddheshiya: SEO, web development, public data and useful online tools built under SKM Studio.">
+  <Header />
+  <main><Hero /><About /><Work /><Principles /><KnowledgeHub /><Contact /></main>
+  <Footer />
 </Base>

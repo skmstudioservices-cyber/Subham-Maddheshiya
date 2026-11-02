@@ -23,6 +23,23 @@ const person = { "@context":"https://schema.org", "@type":"Person", name:"Subham
     if (theme.display) root.style.setProperty('--display', '"' + theme.display + '", Georgia, serif');
     if (theme.sans) root.style.setProperty('--sans', '"' + theme.sans + '", ui-sans-serif, system-ui, sans-serif');
     if (theme.radius) root.style.setProperty('--theme-radius', theme.radius);
+    const extra = {
+      bodyWeight: '--body-weight', headingWeight: '--heading-weight', headingScale: '--heading-scale',
+      lineHeight: '--line-height', sectionSpacing: '--section-spacing'
+    };
+    for (const [key, cssName] of Object.entries(extra)) if (theme[key]) root.style.setProperty(cssName, theme[key]);
+    if (theme.bodySize) root.style.setProperty('--body-size', theme.bodySize + 'px');
+    if (theme.letterSpacing !== undefined) root.style.setProperty('--letter-spacing', theme.letterSpacing + 'px');
+    if (theme.contentWidth) root.style.setProperty('--content-width', theme.contentWidth + 'px');
+    if (theme.shadow) root.style.setProperty('--card-shadow', theme.shadow === 'none' ? 'none' : theme.shadow === 'strong' ? '0 18px 45px rgb(20 40 25 / 14%)' : '0 8px 24px rgb(20 40 25 / 7%)');
+    if (theme.buttonStyle) root.style.setProperty('--button-radius', theme.buttonStyle === 'pill' ? '999px' : theme.buttonStyle === 'square' ? '2px' : '7px');
+    const fontUrl = name => name === 'Georgia' || name === 'Arial' || name === 'system-ui' ? null : 'https://fonts.googleapis.com/css2?family=' + encodeURIComponent(name).replace(/%20/g, '+') + ':wght@300;400;500;600;700;800;900&display=swap';
+    const urls = [fontUrl(theme.display), fontUrl(theme.sans)].filter(Boolean);
+    if (urls.length) {
+      let link = document.getElementById('theme-google-fonts');
+      if (!link) { link = document.createElement('link'); link.id = 'theme-google-fonts'; link.rel = 'stylesheet'; document.head.appendChild(link); }
+      link.href = urls.join('&family=');
+    }
   } catch {}
 })();
 </script>
